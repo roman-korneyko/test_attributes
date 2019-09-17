@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Test\Attributes\Api\Data\SalesInformationInterface" type="Test\Attributes\Model\SalesInformation"/>
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="Test_Attributes" type="Test\Attributes\Plugin\ProductGet"/>
+    </type>
+    <type name="Test\Attributes\Api\Data\SalesInformationInterface">
+        <arguments>
+            <argument name="orderStatuses" xsi:type="array">
+                <item name="new" xsi:type="const">\Magento\Sales\Model\Order::STATE_NEW</item>
+                <item name="processing" xsi:type="const">\Magento\Sales\Model\Order::STATE_PROCESSING</item>
+                <item name="pending" xsi:type="const">\Magento\Sales\Model\Order::STATE</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
